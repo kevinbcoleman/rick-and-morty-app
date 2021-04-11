@@ -7,7 +7,7 @@ $(() => {
     url: 'https://rickandmortyapi.com/api/character'
   }).then(
     (data) => {
-      const $rickPic = $('<img>').attr('src', data.results[0].image)
+      const $rickPic = $('<img>').addClass('card-img').attr('src', data.results[0].image)
       $('#rick').append($rickPic)
 
 
