@@ -1,20 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: lightcyan;
+  position: relative;
+  /* margin: 0;
+  padding: 0; */
 }
 
 #container {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
+  /* display: flex;
+  flex-flow: row wrap; */
 }
 
 main {
-  position: relative;
+  /* position: relative; */
 }
 
+/* #modal-container {
+  width: 90%;
+  display: flex;
+  flex-basis: 50%;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  } */
+
 #modal {
-/* background-color: ; */
-margin: auto;
-height: 50%;
-width: 50%;
+display: none;
+background-color: white;
+height: 400px;
+width: 40%;
 z-index: 1;
+position: absolute;
+left: 30%;
+top: 25%;
 }
+
