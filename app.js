@@ -6,9 +6,10 @@ $(() => {
 
   const $modal = $('<div>').attr('id', 'modal')
   const $modalContent = $('<div>').attr('id', 'modal-content').appendTo($modal)
-  const $modalImg = $('<img>').appendTo($modalContent)
+  const $modalImg = $('<img>').attr('id', 'modal-image').appendTo($modalContent)
   const $modalHeader = $('<h3>').attr('id', 'name').appendTo($modalContent)
   const $modalStatus = $('<p>').attr('id', 'status').appendTo($modalContent)
+  const $modalOrigin = $('<p>').attr('id', 'origin').appendTo($modalContent)
   const $modalLoc = $('<p>').attr('id', 'location').appendTo($modalContent)
   $('#container').after($modal)
 
@@ -44,6 +45,7 @@ $(() => {
             $modalImg.attr('src', data.results[i].image)
             $modalHeader.text(data.results[i].name)
             $modalStatus.text('Status: ' + data.results[i].status)
+            $modalOrigin.text('Origin: ' + data.results[i].origin.name)
             $modalLoc.text('Last known location: ' + data.results[i].location.name)
           }
         }
@@ -53,6 +55,24 @@ $(() => {
       console.log('bad request')
     }
   )
+  $.ajax({
+    url: 'https://rickandmortyapi.com/api/character/?id=290'
+  }).then(
+    (data) => {
+      console.log(data)
+    },
+    () => {
+      console.log('bad request')
+    }
+  )
+
+
+
+
+
+
+
+
 })
 
 
