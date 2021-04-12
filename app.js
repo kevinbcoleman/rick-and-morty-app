@@ -18,7 +18,13 @@ $(() => {
     url: 'https://rickandmortyapi.com/api/character'
   }).then(
     (data) => {
-
+      // console.log(data.results)
+      // const charactersArr = data.results
+      // console.log(charactersArr)
+      // charactersArr.forEach(() => {
+      //   let names = $('<p>').text(data.results.name)
+      //   console.log(names)
+      // })
       ///////////////////////////////////////////
       //IMAGES FOR CARD GALLERY
       ///////////////////////////////////////////
@@ -56,10 +62,24 @@ $(() => {
     }
   )
   $.ajax({
-    url: 'https://rickandmortyapi.com/api/character/?id=290'
+    url: 'https://rickandmortyapi.com/api/episode/1,2,3,4,5,6,7,8,9,10,11'
   }).then(
     (data) => {
       console.log(data)
+      ////////////////////////////////////
+      //SEASON 1
+      ////////////////////////////////////
+      for (let i = 0; i < 11; i++) {
+        let $eps = $('<div>').attr('id', 'ep' + data[i].id).addClass('s01').appendTo('#episodes-s01')
+        $('<p>').text(data[i].name).appendTo($eps)
+      }
+      $('#submit').on('click', (event) => {
+        if (event.currentTarget.val() === 'Season-1') {
+          $('#season1').css('display', 'block')
+          console.log($(event.currentTarget))
+        }
+      })
+      console.log(data.results)
     },
     () => {
       console.log('bad request')
