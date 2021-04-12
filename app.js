@@ -10,7 +10,7 @@ $(() => {
 
 
       const personArr = []
-
+      let $modalImg = $('.modal-img')
       let $nameHeader = $('#name')
       let $status = $('#status')
       let $location = $('#location')
@@ -40,6 +40,14 @@ $(() => {
       const $jerryPic = $('<img>').addClass('card-img').attr('src', data.results[4].image)
       $('#5').append($jerryPic)
 
+
+      //Attempt to dynamically generate cardsd from other characters
+      // for (let i = 5; i < 10; i++) {
+      //   $('<div>').attr('id', data.results[i].id).appendTo('.card-gallery')
+      //   $('<img>').attr('src', data.results[i].image)
+
+      // }
+
       ///////////////
 
       $('.card').on('click', event => {
@@ -47,6 +55,7 @@ $(() => {
         $('#modal').css('display', 'block')
         for (let i = 0; i < 5; i++) {
           if (parseInt(event.currentTarget.id) === data.results[i].id) {
+            $modalImg.attr('src', data.results[i].image)
             $nameHeader.text(data.results[i].name)
             $status.text('Status: ' + data.results[i].status)
             $location.text('Last known location: ' + data.results[i].location.name)
