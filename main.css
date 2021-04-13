@@ -1,3 +1,7 @@
+
+/****************************************
+GENERAL STYLES
+****************************************/  
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +12,8 @@ body {
   position: relative;
   text-align: center;
   margin: auto;
+  color: #232753;
+  font-family: 'Cabin Sketch', cursive ;
 }
 
 h2 {
@@ -34,6 +40,28 @@ h2 {
   width: 80%;
   margin: 0 auto 20%;
 }
+
+input,
+button {
+  padding: 10px;
+  background-color: #ffb20f;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font: 1em 'Cabin Sketch';
+}
+
+
+button:active,
+input:active {
+  background-color: #5db948;
+  /* color: #972d07; */
+}
+
+
+/****************************************
+CARD GALLERY
+****************************************/  
 
 .card-gallery {
   height: 80%;
@@ -76,14 +104,12 @@ MODAL
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-	background-color: white;
+	background-color: #f1f6bc;
 	height: 300px;
 	width: 50%;
 	border-radius: 2%;
 	margin: 150px auto;
 	box-shadow: 0 0 24px 4px rgba(0, 0, 0, 0.6);
-
-
   padding: 3%;
 }
 
@@ -117,8 +143,6 @@ SEASONS EPISODE LISTS
 #episodes-s04 {
   display: none;
 }  
-
-
 
 #seasons div {
   padding: 5px;
