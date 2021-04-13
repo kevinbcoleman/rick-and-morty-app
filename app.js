@@ -180,26 +180,3 @@ $(() => {
 })
 
 
-
-
-      //rick. id.293
-      //morty. id. 234
-      //morty id.
-      //summer E C137 id.338
-      //beth id.38
-      //jerry id.175
-
-      //Attempt to dynamically generate cardsd from other characters
-      // for (let i = 5; i < 10; i++) {
-      //   $('<div>').attr('id', data.results[i].id).appendTo('.card-gallery')
-      //   $('<img>').attr('src', data.results[i].image)
-
-      // }
-
-
-  ////////////////////
-  //QUERIES
-  ///////////////////
-  //character name
-  // status. DOA
-  //location. current dimension
