@@ -42,7 +42,7 @@ $(() => {
 
 
       ///////////////////////////////////////////
-      //MODAL CONTENT GENERATION
+      //MODAL CONTENT GENERATION & MODAL CLOSE
       ///////////////////////////////////////////
       $('.card').on('click', event => {
         displayModal()
@@ -74,8 +74,10 @@ $(() => {
       ////////////////////////////////////
       for (let i = 0; i < 11; i++) {
         let $eps = $('<div>').attr('id', 'ep' + data[i].id).addClass('s01').appendTo('#episodes-s01')
-        $('<p>').text(data[i].name).appendTo($eps)
+        $('<p>').addClass('episode-name').text(data[i].name).appendTo($eps)
       }
+
+
       $('input').on('click', (event) => {
         // $(event.stopPropagation())
         if ($(event.currentTarget).val() === 'Season 1') {
@@ -175,12 +177,6 @@ $(() => {
     }
   )
 
-
-
-
-
-
-
 })
 
 
@@ -207,16 +203,3 @@ $(() => {
   //character name
   // status. DOA
   //location. current dimension
-
-  //Dragon Ball Z style character update.
-
-
-
-
-  // Filter characters
-  // You can also include filters in the URL by including additional query parameters.
-  // To start filtering add a ? followed by the query <query>=<value>. If you want to chain
-  // several queries in the same call, use & followed by the query.
-
-  // For example, If you want to check how many alive Ricks exist, just add ?name=rick&status=alive to the URL.
-
