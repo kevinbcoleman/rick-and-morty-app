@@ -6,6 +6,18 @@ const closeModal = () => {
   $('#modal').css('display', 'none')
 }
 
+const generateList = (appendTarg, seasonArrNum) => {
+  for (let i = 0; i < seasonArrNum.length; i++) {
+    const $p = $('<p>').text(seasonArrNum[i])
+    $(appendTarg).append($p)
+  }
+}
+
+const season1Arr = []
+const season2Arr = []
+const season3Arr = []
+const season4Arr = []
+
 $(() => {
 
   ///////////////////////////////////////////
@@ -29,6 +41,14 @@ $(() => {
       ///////////////////////////////////////////
       //IMAGES FOR CARD GALLERY
       ///////////////////////////////////////////
+
+      const $testDiv = $('<div>').appendTo('body')
+      for (let i = 0; i < 15; i++) {
+        $('<div>').addClass('testing').appendTo($testDiv)
+        $('<img>').attr('src', data.results[i].image).appendTo('.testing')
+        $('<p>').text(data.results[i].name).appendTo('.testing')
+      }
+
       const $rickPic = $('.img1').attr('src', data.results[0].image)
       $('#1').append($rickPic)
       const $mortyPic = $('.img2').attr('src', data.results[1].image)
@@ -68,25 +88,14 @@ $(() => {
     url: 'https://rickandmortyapi.com/api/episode/1,2,3,4,5,6,7,8,9,10,11'
   }).then(
     (data) => {
-      console.log(data)
-      ////////////////////////////////////
-      //SEASON 1
-      ////////////////////////////////////
-      for (let i = 0; i < 11; i++) {
-        let $eps = $('<div>').attr('id', 'ep' + data[i].id).addClass('s01').appendTo('#episodes-s01')
-        $('<p>').addClass('episode-name').text(data[i].name).appendTo($eps)
+
+      for (let i = 0; i < data.length; i++) {
+        season1Arr.push(data[i].name)
       }
 
-
-      $('input').on('click', (event) => {
-        // $(event.stopPropagation())
-        if ($(event.currentTarget).val() === 'Season 1') {
-          $('#episodes-s02').css('display', 'none')
-          $('#episodes-s03').css('display', 'none')
-          $('#episodes-s04').css('display', 'none')
-          $('#episodes-s01').css('display', 'block')
-          console.log($(event.currentTarget))
-        }
+      $('#s1').on('click', () => {
+        $('#seasons').empty()
+        generateList('#seasons', season1Arr)
       })
     },
     () => {
@@ -101,21 +110,15 @@ $(() => {
       ////////////////////////////////////
       //SEASON 2
       ////////////////////////////////////
-      for (let i = 0; i < 10; i++) {
-        let $eps2 = $('<div>').attr('id', 'ep' + data[i].id).addClass('s02').appendTo('#episodes-s02')
-        $('<p>').text(data[i].name).appendTo($eps2)
+
+      for (let i = 0; i < data.length; i++) {
+        season2Arr.push(data[i].name)
       }
-      $('input').on('click', (event) => {
-        // $(event.stopPropagation())
-        if ($(event.currentTarget).val() === 'Season 2') {
-          $('#episodes-s01').css('display', 'none')
-          $('#episodes-s03').css('display', 'none')
-          $('#episodes-s04').css('display', 'none')
-          $('#episodes-s02').css('display', 'block')
-          console.log($(event.currentTarget))
-        }
+
+      $('#s2').on('click', (event) => {
+        $('#seasons').empty()
+        generateList('#seasons', season2Arr)
       })
-      console.log(data.results)
     },
     () => {
       console.log('bad request')
@@ -129,20 +132,15 @@ $(() => {
       ////////////////////////////////////
       //SEASON 3
       ////////////////////////////////////
-      for (let i = 0; i < 10; i++) {
-        let $eps3 = $('<div>').attr('id', 'ep' + data[i].id).addClass('s03').appendTo('#episodes-s03')
-        $('<p>').text(data[i].name).appendTo($eps3)
+
+      for (let i = 0; i < data.length; i++) {
+        season3Arr.push(data[i].name)
       }
-      $('input').on('click', (event) => {
-        if ($(event.currentTarget).val() === 'Season 3') {
-          $('#episodes-s01').css('display', 'none')
-          $('#episodes-s02').css('display', 'none')
-          $('#episodes-s04').css('display', 'none')
-          $('#episodes-s03').css('display', 'block')
-          console.log($(event.currentTarget))
-        }
+
+      $('#s3').on('click', (event) => {
+        $('#seasons').empty()
+        generateList('#seasons', season3Arr)
       })
-      console.log(data.results)
     },
     () => {
       console.log('bad request')
@@ -156,21 +154,15 @@ $(() => {
       ////////////////////////////////////
       //SEASON 4
       ////////////////////////////////////
-      for (let i = 0; i < 10; i++) {
-        let $eps4 = $('<div>').attr('id', 'ep' + data[i].id).addClass('s04').appendTo('#episodes-s04')
-        $('<p>').text(data[i].name).appendTo($eps4)
+
+      for (let i = 0; i < data.length; i++) {
+        season4Arr.push(data[i].name)
       }
-      $('input').on('click', (event) => {
-        // $(event.stopPropagation())
-        if ($(event.currentTarget).val() === 'Season 4') {
-          $('#episodes-s01').css('display', 'none')
-          $('#episodes-s02').css('display', 'none')
-          $('#episodes-s03').css('display', 'none')
-          $('#episodes-s04').css('display', 'block')
-          console.log($(event.currentTarget))
-        }
+
+      $('#s4').on('click', (event) => {
+        $('#seasons').empty()
+        generateList('#seasons', season4Arr)
       })
-      console.log(data.results)
     },
     () => {
       console.log('bad request')
