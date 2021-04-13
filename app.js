@@ -2,6 +2,10 @@ const displayModal = () => {
   $('#modal').css('display', 'block')
 }
 
+const closeModal = () => {
+  $('#modal').css('display', 'none')
+}
+
 $(() => {
 
   ///////////////////////////////////////////
@@ -14,7 +18,8 @@ $(() => {
   const $modalStatus = $('<p>').attr('id', 'status').appendTo($modalContent)
   const $modalOrigin = $('<p>').attr('id', 'origin').appendTo($modalContent)
   const $modalLoc = $('<p>').attr('id', 'location').appendTo($modalContent)
-  $('#container').after($modal)
+  const $modalClose = $('<button>').text('Close').attr('id', 'close').appendTo($modalContent)
+  $('body').append($modal)
 
 
   $.ajax({
@@ -52,6 +57,8 @@ $(() => {
           }
         }
       })
+
+      $('#close').on('click', closeModal)
     },
     () => {
       console.log('bad request')
