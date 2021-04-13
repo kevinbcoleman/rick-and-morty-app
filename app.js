@@ -4,6 +4,9 @@ const displayModal = () => {
 
 $(() => {
 
+  ///////////////////////////////////////////
+  //MODAL GENERATION
+  ///////////////////////////////////////////
   const $modal = $('<div>').attr('id', 'modal')
   const $modalContent = $('<div>').attr('id', 'modal-content').appendTo($modal)
   const $modalImg = $('<img>').attr('id', 'modal-image').appendTo($modalContent)
@@ -18,17 +21,9 @@ $(() => {
     url: 'https://rickandmortyapi.com/api/character'
   }).then(
     (data) => {
-      // console.log(data.results)
-      // const charactersArr = data.results
-      // console.log(charactersArr)
-      // charactersArr.forEach(() => {
-      //   let names = $('<p>').text(data.results.name)
-      //   console.log(names)
-      // })
       ///////////////////////////////////////////
       //IMAGES FOR CARD GALLERY
       ///////////////////////////////////////////
-
       const $rickPic = $('.img1').attr('src', data.results[0].image)
       $('#1').append($rickPic)
       const $mortyPic = $('.img2').attr('src', data.results[1].image)
@@ -41,8 +36,9 @@ $(() => {
       $('#5').append($jerryPic)
 
 
-      ///////////////
-
+      ///////////////////////////////////////////
+      //MODAL CONTENT GENERATION
+      ///////////////////////////////////////////
       $('.card').on('click', event => {
         displayModal()
 
@@ -73,9 +69,40 @@ $(() => {
         let $eps = $('<div>').attr('id', 'ep' + data[i].id).addClass('s01').appendTo('#episodes-s01')
         $('<p>').text(data[i].name).appendTo($eps)
       }
-      $('#submit').on('click', (event) => {
-        if (event.currentTarget.val() === 'Season-1') {
-          $('#season1').css('display', 'block')
+      $('input').on('click', (event) => {
+        // $(event.stopPropagation())
+        if ($(event.currentTarget).val() === 'Season 1') {
+          $('#episodes-s02').css('display', 'none')
+          $('#episodes-s03').css('display', 'none')
+          $('#episodes-s04').css('display', 'none')
+          $('#episodes-s01').css('display', 'block')
+          console.log($(event.currentTarget))
+        }
+      })
+    },
+    () => {
+      console.log('bad request')
+    }
+  )
+  $.ajax({
+    url: 'https://rickandmortyapi.com/api/episode/12,13,14,15,16,17,18,19,20,21'
+  }).then(
+    (data) => {
+      console.log(data)
+      ////////////////////////////////////
+      //SEASON 2
+      ////////////////////////////////////
+      for (let i = 0; i < 10; i++) {
+        let $eps2 = $('<div>').attr('id', 'ep' + data[i].id).addClass('s02').appendTo('#episodes-s02')
+        $('<p>').text(data[i].name).appendTo($eps2)
+      }
+      $('input').on('click', (event) => {
+        // $(event.stopPropagation())
+        if ($(event.currentTarget).val() === 'Season 2') {
+          $('#episodes-s01').css('display', 'none')
+          $('#episodes-s03').css('display', 'none')
+          $('#episodes-s04').css('display', 'none')
+          $('#episodes-s02').css('display', 'block')
           console.log($(event.currentTarget))
         }
       })
@@ -85,7 +112,61 @@ $(() => {
       console.log('bad request')
     }
   )
-
+  $.ajax({
+    url: 'https://rickandmortyapi.com/api/episode/22,23,24,25,26,27,28,29,30,31'
+  }).then(
+    (data) => {
+      console.log(data)
+      ////////////////////////////////////
+      //SEASON 3
+      ////////////////////////////////////
+      for (let i = 0; i < 10; i++) {
+        let $eps3 = $('<div>').attr('id', 'ep' + data[i].id).addClass('s03').appendTo('#episodes-s03')
+        $('<p>').text(data[i].name).appendTo($eps3)
+      }
+      $('input').on('click', (event) => {
+        if ($(event.currentTarget).val() === 'Season 3') {
+          $('#episodes-s01').css('display', 'none')
+          $('#episodes-s02').css('display', 'none')
+          $('#episodes-s04').css('display', 'none')
+          $('#episodes-s03').css('display', 'block')
+          console.log($(event.currentTarget))
+        }
+      })
+      console.log(data.results)
+    },
+    () => {
+      console.log('bad request')
+    }
+  )
+  $.ajax({
+    url: 'https://rickandmortyapi.com/api/episode/32,33,34,35,36,37,38,39,40,41'
+  }).then(
+    (data) => {
+      console.log(data)
+      ////////////////////////////////////
+      //SEASON 4
+      ////////////////////////////////////
+      for (let i = 0; i < 10; i++) {
+        let $eps4 = $('<div>').attr('id', 'ep' + data[i].id).addClass('s04').appendTo('#episodes-s04')
+        $('<p>').text(data[i].name).appendTo($eps4)
+      }
+      $('input').on('click', (event) => {
+        // $(event.stopPropagation())
+        if ($(event.currentTarget).val() === 'Season 4') {
+          $('#episodes-s01').css('display', 'none')
+          $('#episodes-s02').css('display', 'none')
+          $('#episodes-s03').css('display', 'none')
+          $('#episodes-s04').css('display', 'block')
+          console.log($(event.currentTarget))
+        }
+      })
+      console.log(data.results)
+    },
+    () => {
+      console.log('bad request')
+    }
+  )
 
 
 
