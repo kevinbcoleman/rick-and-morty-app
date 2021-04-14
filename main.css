@@ -23,7 +23,7 @@ h2 {
 
 #header-container {
   width: 100%;
-  padding: 3%;
+  padding: 20px;
   margin-bottom: 50px;
   text-align: center;
   background-color: #232753;
@@ -144,12 +144,14 @@ SEASONS EPISODE LISTS
   display: none;
 }  
 
-#seasons div {
-  padding: 5px;
+#seasons {
+  margin-top: 1.5em;
 }
 
 #seasons p {
   text-align: left;
+  padding: 5px;
+
 }
 
 
@@ -167,7 +169,7 @@ MEDIA QUERIES
 
 @media screen and (min-width: 768px) {
   .card-gallery {
-    height: 400px;
+    /* height: 400px; */
   }
   #seasons p {
     text-align: center;
@@ -184,6 +186,6 @@ MEDIA QUERIES
     height: 200px;
   }
   .card-gallery {
-    height: 500px;
+    /* height: 500px; */
   }
 }

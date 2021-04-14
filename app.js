@@ -13,10 +13,8 @@ const generateList = (appendTarg, seasonArrNum) => {
   }
 }
 
-const season1Arr = []
-const season2Arr = []
-const season3Arr = []
-const season4Arr = []
+const seasonArr = [[], [], [], []]
+
 
 $(() => {
 
@@ -38,37 +36,24 @@ $(() => {
     url: 'https://rickandmortyapi.com/api/character'
   }).then(
     (data) => {
+
       ///////////////////////////////////////////
       //IMAGES FOR CARD GALLERY
       ///////////////////////////////////////////
 
-      const $testDiv = $('<div>').appendTo('body')
       for (let i = 0; i < 15; i++) {
-        $('<div>').addClass('testing').appendTo($testDiv)
-        $('<img>').attr('src', data.results[i].image).appendTo('.testing')
-        $('<p>').text(data.results[i].name).appendTo('.testing')
+        const $cardDiv = $('<div>').addClass('card').attr('id', data.results[i].id)
+        const $cardImg = $('<img>').attr('src', data.results[i].image)
+        $cardDiv.append($cardImg)
+        $('.card-gallery').append($cardDiv)
       }
-
-      const $rickPic = $('.img1').attr('src', data.results[0].image)
-      $('#1').append($rickPic)
-      const $mortyPic = $('.img2').attr('src', data.results[1].image)
-      $('#2').append($mortyPic)
-      const $summerPic = $('.img3').attr('src', data.results[2].image)
-      $('#3').append($summerPic)
-      const $bethPic = $('.img4').attr('src', data.results[3].image)
-      $('#4').append($bethPic)
-      const $jerryPic = $('.img5').attr('src', data.results[4].image)
-      $('#5').append($jerryPic)
-
 
       ///////////////////////////////////////////
       //MODAL CONTENT GENERATION & MODAL CLOSE
       ///////////////////////////////////////////
-      $('.card').on('click', event => {
-        displayModal()
-
-        for (let i = 0; i < 5; i++) {
-          if (parseInt(event.currentTarget.id) === data.results[i].id) {
+      const populateModal = (charInfo) => {
+        for (let i = 0; i < 15; i++) {
+          if (parseInt(charInfo.id) === data.results[i].id) {
             $modalImg.attr('src', data.results[i].image)
             $modalHeader.text(data.results[i].name)
             $modalStatus.text('Status: ' + data.results[i].status)
@@ -76,6 +61,11 @@ $(() => {
             $modalLoc.text('Last known location: ' + data.results[i].location.name)
           }
         }
+      }
+
+      $('.card').on('click', event => {
+        displayModal()
+        populateModal(event.currentTarget)
       })
 
       $('#close').on('click', closeModal)
@@ -88,14 +78,16 @@ $(() => {
     url: 'https://rickandmortyapi.com/api/episode/1,2,3,4,5,6,7,8,9,10,11'
   }).then(
     (data) => {
-
+      ////////////////////////////////////
+      //SEASON 1
+      ////////////////////////////////////
       for (let i = 0; i < data.length; i++) {
-        season1Arr.push(data[i].name)
+        seasonArr[0].push(data[i].name)
       }
 
       $('#s1').on('click', () => {
         $('#seasons').empty()
-        generateList('#seasons', season1Arr)
+        generateList('#seasons', seasonArr[0])
       })
     },
     () => {
@@ -112,12 +104,12 @@ $(() => {
       ////////////////////////////////////
 
       for (let i = 0; i < data.length; i++) {
-        season2Arr.push(data[i].name)
+        seasonArr[1].push(data[i].name)
       }
 
       $('#s2').on('click', (event) => {
         $('#seasons').empty()
-        generateList('#seasons', season2Arr)
+        generateList('#seasons', seasonArr[1])
       })
     },
     () => {
@@ -134,12 +126,12 @@ $(() => {
       ////////////////////////////////////
 
       for (let i = 0; i < data.length; i++) {
-        season3Arr.push(data[i].name)
+        seasonArr[2].push(data[i].name)
       }
 
       $('#s3').on('click', (event) => {
         $('#seasons').empty()
-        generateList('#seasons', season3Arr)
+        generateList('#seasons', seasonArr[2])
       })
     },
     () => {
@@ -156,12 +148,12 @@ $(() => {
       ////////////////////////////////////
 
       for (let i = 0; i < data.length; i++) {
-        season4Arr.push(data[i].name)
+        seasonArr[3].push(data[i].name)
       }
 
       $('#s4').on('click', (event) => {
         $('#seasons').empty()
-        generateList('#seasons', season4Arr)
+        generateList('#seasons', seasonArr[3])
       })
     },
     () => {
