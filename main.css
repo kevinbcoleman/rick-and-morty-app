@@ -187,6 +187,10 @@ body {
   font-size: 1.5em;
 }
 
+footer {
+  font-size: 1rem;
+}
+
   .card-gallery {
     /* height: 400px; */
   }
