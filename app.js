@@ -63,10 +63,16 @@ $(() => {
         }
       }
 
+      $('.card').on('mouseover', event => {
+        $(event.currentTarget).toggleClass('.card-hover')
+        console.log(event.currentTarget)
+      })
+
       $('.card').on('click', event => {
         displayModal()
         populateModal(event.currentTarget)
       })
+
 
       $('#close').on('click', closeModal)
     },
